@@ -4,6 +4,14 @@
 #include "utility.hpp"
 struct hit_record;
 
+glm::vec3 random_in_hemisphere(const glm::vec3& normal) {
+    glm::vec3 in_unit_sphere = glm::ballRand(1.0f);
+    if (glm::dot(in_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
+        return in_unit_sphere;
+    else
+        return -in_unit_sphere;
+}
+
 class material {
     public:
         virtual color emitted(double u, double v, const point3& p) const {
@@ -21,7 +29,7 @@ class lambertian : public material {
         virtual bool scatter(
             const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
         ) const override {
-            auto scatter_direction = rec.normal + glm::normalize(glm::ballRand(1.0f));
+            auto scatter_direction =  random_in_hemisphere(rec.normal);
             if(glm::length(scatter_direction)<EPSILON)
                 scatter_direction = rec.normal;
             scattered = ray(rec.p, scatter_direction);

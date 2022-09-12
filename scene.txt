@@ -1,0 +1,8 @@
+#MATERIAL COLOR SPHERE POSITION RADIUS 
+DIELECTRIC 1.5 SPHERE 150 200 100 100 
+#MATERIAL COLOR MESHTRIANGLE PATH 
+LAMBERTIAN 0.5 0.5 0.5 MESHTRIANGLE .\\models\\cornellbox\\floor.obj 
+LAMBERTIAN 0.5 0 0 MESHTRIANGLE .\\models\\cornellbox\\left.obj 
+LAMBERTIAN 0 0.5 0 MESHTRIANGLE .\\models\\cornellbox\\right.obj 
+DIFFUSELIGHT 10 10 10 MESHTRIANGLE .\\models\\cornellbox\\light.obj 
+METAL 0.5 0.4 0.8 0.3 MESHTRIANGLE .\\models\\cornellbox\\tallbox.obj 

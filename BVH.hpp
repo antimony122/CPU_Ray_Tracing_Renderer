@@ -11,9 +11,9 @@ class bvh_node : public hittable {
     public:
         bvh_node();
 
-        bvh_node(const hittable_list& list)
+        /*bvh_node(const hittable_list& list)
             : bvh_node(list.objects, 0, list.objects.size())
-        {}
+        {}*/
 
         bvh_node(
             const std::vector<shared_ptr<hittable>>& src_objects,
@@ -86,7 +86,7 @@ bvh_node::bvh_node(
 
     aabb box_left, box_right;
 
-    if (  !left->bounding_box (box_left)
+    if (  !left->bounding_box(box_left)
        || !right->bounding_box(box_right)
     )
         std::cerr << "No bounding box in bvh_node constructor.\n";
